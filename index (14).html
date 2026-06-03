@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klarer Kopf – 10 Übungen gegen Brainfog</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #b5895a;
+    --gold-light: #d4a96a;
+    --gold-pale: #e8c99a;
+    --cream: #faf6f0;
+    --cream-dark: #f2ebe0;
+    --warm-brown: #5a3e2b;
+    --text: #3d2f22;
+    --text-muted: #8a7060;
+    --shadow: rgba(90,62,43,0.10);
+    --radius: 14px;
+    --transition: 0.35s cubic-bezier(.4,0,.2,1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ---- HEADER ---- */
+  header {
+    background: linear-gradient(135deg, var(--warm-brown) 0%, #7a5438 100%);
+    color: var(--cream);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(181,137,90,.25) 0%, transparent 70%);
+  }
+  header .subtitle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+    margin-bottom: .8rem;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: .6rem;
+  }
+  header p {
+    font-size: .85rem;
+    font-weight: 300;
+    color: var(--gold-pale);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ---- MAIN ---- */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 4rem;
+  }
+
+  /* ---- INTRO BAR ---- */
+  .intro-bar {
+    background: white;
+    border: 1px solid var(--gold-pale);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .intro-bar .icon { font-size: 1.5rem; flex-shrink: 0; }
+  .intro-bar p { font-size: .85rem; color: var(--text-muted); line-height: 1.6; }
+  .intro-bar strong { color: var(--gold); }
+
+  /* ---- PROGRESS ---- */
+  .progress-section {
+    margin-bottom: 1.8rem;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: .78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--cream-dark);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 999px;
+    transition: width var(--transition);
+    width: 0%;
+  }
+
+  /* ---- SECTION HEADING ---- */
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--warm-brown);
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold-pale);
+  }
+
+  /* ---- EXERCISE CARD ---- */
+  .card {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius);
+    margin-bottom: 1.1rem;
+    box-shadow: 0 2px 10px var(--shadow);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(90,62,43,.14); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.3rem;
+    cursor: pointer;
+    user-select: none;
+    background: white;
+    transition: background var(--transition);
+  }
+  .card-header:hover { background: var(--cream); }
+
+  .card-number {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .card-title-wrap { flex: 1; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: var(--warm-brown);
+    line-height: 1.2;
+  }
+  .card-meta {
+    font-size: .73rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-top: .15rem;
+  }
+
+  .card-chevron {
+    color: var(--gold);
+    font-size: .9rem;
+    transition: transform var(--transition);
+    flex-shrink: 0;
+  }
+  .card.open .card-chevron { transform: rotate(180deg); }
+
+  /* ---- CARD BODY ---- */
+  .card-body {
+    display: none;
+    padding: 0 1.3rem 1.3rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .card.open .card-body { display: block; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+  @media(min-width: 520px) {
+    .info-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .info-block {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: .85rem 1rem;
+  }
+  .info-block.full { grid-column: 1 / -1; }
+  .info-label {
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .35rem;
+  }
+  .info-text {
+    font-size: .85rem;
+    color: var(--text);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ---- TIMER ---- */
+  .timer-row {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-top: 1rem;
+    padding-top: .9rem;
+    border-top: 1px solid var(--cream-dark);
+    flex-wrap: wrap;
+  }
+  .timer-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--warm-brown);
+    min-width: 60px;
+  }
+  .btn {
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .5rem 1.2rem;
+    transition: background var(--transition), transform .15s;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: white;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--gold-pale);
+    color: var(--gold);
+  }
+  .btn-done {
+    background: #e8f5e9;
+    color: #388e3c;
+    border: 1.5px solid #a5d6a7;
+    margin-left: auto;
+  }
+  .btn-done.checked {
+    background: #388e3c;
+    color: white;
+    border-color: #388e3c;
+  }
+
+  /* ---- REFLECT ---- */
+  .reflect-area {
+    margin-top: 1rem;
+  }
+  .reflect-label {
+    font-size: .73rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: .4rem;
+  }
+  textarea {
+    width: 100%;
+    min-height: 70px;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 10px;
+    padding: .7rem .9rem;
+    font-family: 'Jost', sans-serif;
+    font-size: .83rem;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    resize: vertical;
+    outline: none;
+    transition: border-color var(--transition);
+  }
+  textarea:focus { border-color: var(--gold-pale); }
+
+  /* ---- EMERGENCY ROUTINE ---- */
+  .emergency {
+    background: linear-gradient(135deg, var(--warm-brown), #6b4a35);
+    color: var(--cream);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.5rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 6px 28px rgba(90,62,43,.22);
+  }
+  .emergency h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: .4rem;
+    color: var(--gold-pale);
+  }
+  .emergency .sub {
+    font-size: .78rem;
+    color: rgba(250,246,240,.6);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    letter-spacing: .05em;
+  }
+  .emergency-steps { list-style: none; }
+  .emergency-steps li {
+    display: flex;
+    gap: .8rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(212,169,106,.2);
+    font-size: .86rem;
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(250,246,240,.9);
+  }
+  .emergency-steps li:last-child { border-bottom: none; }
+  .emergency-steps .step-num {
+    background: rgba(181,137,90,.35);
+    color: var(--gold-pale);
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: .05rem;
+  }
+  .emergency-total {
+    margin-top: 1rem;
+    font-size: .78rem;
+    color: var(--gold-pale);
+    font-weight: 300;
+    text-align: right;
+    letter-spacing: .05em;
+  }
+
+  /* ---- SUMMARY BAR ---- */
+  .summary-bar {
+    background: white;
+    border: 1px solid var(--gold-pale);
+    border-radius: var(--radius);
+    padding: 1rem 1.4rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .8rem;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .summary-text {
+    font-size: .85rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+  .summary-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: .74rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: .03em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="subtitle">Mentale Klarheit · Selbstregulation</div>
+  <h1>Klarer Kopf</h1>
+  <p>10 kurze Übungen gegen Brainfog – sofort anwendbar, schnell spürbar.</p>
+</header>
+
+<main>
+
+  <div class="intro-bar">
+    <span class="icon">💡</span>
+    <p>Die Übungen sind nach <strong>Sofortwirkung</strong> sortiert. Beginne oben – schon 1–3 Minuten können einen Unterschied machen. Wirkung ist individuell verschieden.</p>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-label">
+      <span>Dein Fortschritt</span>
+      <span id="progress-text">0 von 10</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <div class="section-heading">Sofortige Klarheit · 1–2 Min.</div>
+
+  <!-- CARDS injected by JS -->
+  <div id="cards-container"></div>
+
+  <!-- EMERGENCY ROUTINE -->
+  <div class="emergency">
+    <h2>5-Minuten-Notfall-Routine</h2>
+    <div class="sub">Bei akutem Brainfog – einfach der Reihe nach</div>
+    <ul class="emergency-steps">
+      <li><span class="step-num">1</span><span><strong>Kalt-Warm-Impuls:</strong> Handgelenke 20 Sek. unter kaltes Wasser · belebt sofort</span></li>
+      <li><span class="step-num">2</span><span><strong>Boxatmung:</strong> 4× einatmen – 4× halten – 4× ausatmen – 4× halten · 1 Min.</span></li>
+      <li><span class="step-num">3</span><span><strong>5-4-3-2-1 Grounding:</strong> 5 Dinge sehen, 4 hören, 3 spüren, 2 riechen, 1 schmecken</span></li>
+      <li><span class="step-num">4</span><span><strong>Wasser trinken:</strong> Ein großes Glas langsam und bewusst trinken</span></li>
+      <li><span class="step-num">5</span><span><strong>Sanftes Klopfen:</strong> Brustbein, Schultern und Kopf leicht beklopfen · 30 Sek.</span></li>
+    </ul>
+    <div class="emergency-total">Gesamt: ca. 5 Minuten · danach kurz stillsitzen und ankommen</div>
+  </div>
+
+  <div class="summary-bar">
+    <div>
+      <div class="summary-count" id="summary-count">0</div>
+      <div class="summary-text">Übungen heute ausprobiert</div>
+    </div>
+    <button class="btn btn-outline" onclick="clearAll()">Alles zurücksetzen</button>
+  </div>
+
+</main>
+
+<footer>
+  Mein Veränderungsweg · veraenderungsweg.de · Diese Übungen ersetzen keine medizinische Behandlung.
+</footer>
+
+<script>
+const STORAGE_KEY = 'brainfog_app_v1';
+
+const exercises = [
+  {
+    id: 1,
+    title: "Kaltes Wasser ans Gesicht",
+    meta: "1 Min. · sofortiger Effekt",
+    how: "Kaltes Wasser in die Hände nehmen und damit ins Gesicht tauchen – oder Handgelenke unter kaltes Wasser halten. Ruhig atmen dabei.",
+    why: "Kaltes Wasser aktiviert den Tauchreflex und bremst das Nervensystem. Das Gehirn bekommt einen klaren Reset-Impuls.",
+    when: "Wenn du dich überhitzt, benebelt oder nach dem Schlafen noch nicht wach fühlst.",
+    duration: 60
+  },
+  {
+    id: 2,
+    title: "Boxatmung",
+    meta: "2 Min. · beruhigt & fokussiert",
+    how: "4 Sekunden einatmen – 4 Sekunden halten – 4 Sekunden ausatmen – 4 Sekunden halten. Das ist ein Durchgang. Mindestens 6–8 Runden.",
+    why: "Diese Atemtechnik bringt das Nervensystem rasch ins Gleichgewicht und erhöht die Sauerstoffversorgung des Gehirns.",
+    when: "Bei Überreizung, mentalem Durcheinander oder wenn du dich nicht konzentrieren kannst.",
+    duration: 120
+  },
+  {
+    id: 3,
+    title: "5-4-3-2-1 Grounding",
+    meta: "2 Min. · erdet sofort",
+    how: "Benenne laut oder innerlich: 5 Dinge, die du siehst · 4 Geräusche, die du hörst · 3 Dinge, die du körperlich spürst · 2 Gerüche · 1 Geschmack.",
+    why: "Das Grounding-Prinzip holt dich aus dem Gedankenkarussell zurück in den gegenwärtigen Moment – das Gehirn kann sich dann neu sortieren.",
+    when: "Bei Gedankenflut, Überwältigung oder wenn du dich von dir selbst entfernt fühlst.",
+    duration: 120
+  },
+  {
+    id: 4,
+    title: "Großes Glas Wasser trinken",
+    meta: "1 Min. · unterschätzt, aber wirkungsvoll",
+    how: "Ein volles Glas Wasser (300–400 ml) langsam und bewusst trinken. Ruhig sitzen, nichts nebenbei tun.",
+    why: "Schon leichte Dehydration verringert die Konzentrationsfähigkeit messbar. Wasser ist oft der einfachste Ausweg aus Brainfog.",
+    when: "Morgens, nach dem Mittagessen oder immer dann, wenn du merkst, dass du wenig getrunken hast.",
+    duration: 60
+  },
+  {
+    id: 5,
+    title: "Kopfhaut-Massage",
+    meta: "1–2 Min. · entspannt und belebt",
+    how: "Mit den Fingerkuppen beider Hände die Kopfhaut kreisend und fest massieren – von der Stirn bis zum Hinterkopf und den Schläfen.",
+    why: "Die Massage regt die Durchblutung im Kopfbereich an und löst muskuläre Anspannung, die Brainfog begünstigt.",
+    when: "Nach langem Sitzen, bei Kopfdruck oder wenn du dich schwer und schwerfällig fühlst.",
+    duration: 90
+  },
+  {
+    id: 6,
+    title: "Körperliches Aufwecken – Schütteln",
+    meta: "2 Min. · belebt den ganzen Körper",
+    how: "Im Stehen die Hände locker schütteln, dann die Arme, dann den ganzen Körper für 1–2 Minuten leicht und spielerisch vibrieren lassen.",
+    why: "Bewegung – auch kurze – erhöht die Durchblutung und setzt Neurotransmitter frei, die die Wachheit steigern. Das Nervensystem kommt in Bewegung.",
+    when: "Nach langem Sitzen, bei Antriebslosigkeit oder wenn dein Kopf sich wie Watte anfühlt.",
+    duration: 120
+  },
+  {
+    id: 7,
+    title: "Mentales Leeren durch Schreiben",
+    meta: "3 Min. · schafft Platz im Kopf",
+    how: "Nimm ein Blatt oder dein Handy. Schreibe alles auf, was dir durch den Kopf geht – ohne zu filtern, ohne Struktur. Einfach raus damit.",
+    why: "Das sogenannte Brain-Dumping entleert den Arbeitsspeicher. Was aufgeschrieben ist, muss nicht mehr im Kopf festgehalten werden.",
+    when: "Wenn du dich von vielen offenen Gedanken blockiert fühlst oder nicht weißt, wo du anfangen sollst.",
+    duration: 180
+  },
+  {
+    id: 8,
+    title: "Akupressur-Punkt – Dritter Augen-Punkt",
+    meta: "1–2 Min. · beruhigt und klärt",
+    how: "Lege einen Finger sanft auf die Mitte zwischen deinen Augenbrauen. Atme ruhig und übe leichten, gleichmäßigen Druck aus.",
+    why: "Dieser Punkt wird in der Akupressur klassisch zur Förderung von Klarheit und Ruhe genutzt. Ob die Wirkung auf Meridiane oder Entspannung zurückgeht – sie wird von vielen Menschen bestätigt.",
+    when: "Bei Erschöpfung, mentalem Nebel oder nach intensiver Bildschirmarbeit.",
+    duration: 90
+  },
+  {
+    id: 9,
+    title: "Frische Luft – Fenster auf",
+    meta: "2 Min. · der einfachste Reset",
+    how: "Fenster öffnen, direkt davor stehen und tief einatmen. Augen schließen, Schultern fallen lassen, 5–10 tiefe Atemzüge nehmen.",
+    why: "Frische Luft erhöht den Sauerstoffgehalt im Blut. Schlechte Raumluft (zu hoher CO₂-Gehalt) ist eine häufige, oft übersehene Ursache für Konzentrationsprobleme.",
+    when: "Im Büro, nach dem Mittagessen, bei Müdigkeit oder immer wenn du merkst, dass du schon lange im gleichen Raum bist.",
+    duration: 120
+  },
+  {
+    id: 10,
+    title: "Dankbarkeitsanker",
+    meta: "2–3 Min. · verschiebt die mentale Perspektive",
+    how: "Schließe die Augen. Denke an drei konkrete Dinge, für die du gerade dankbar bist – und lasse das Gefühl dazu wirklich ankommen. Nicht schnell abhaken, sondern verweilen.",
+    why: "Positive Emotionen aktivieren das parasympathische Nervensystem und öffnen buchstäblich den Blickwinkel. Das Gehirn arbeitet unter Wohlgefühl klarer.",
+    when: "Wenn du dich geistig leer, frustriert oder resigniert fühlst und ein sanfter Einstieg hilft.",
+    duration: 150
+  }
+];
+
+// Grouped for section headings
+const groups = [
+  { label: "Sofortiger Körper-Impuls · 1 Min.", ids: [1,4] },
+  { label: "Atmung & Nervensystem · 1–2 Min.", ids: [2,8] },
+  { label: "Geist erden & entleeren · 2–3 Min.", ids: [3,7,10] },
+  { label: "Bewegung & Umgebung · 1–2 Min.", ids: [5,6,9] }
+];
+
+// ---- State ----
+let state = load();
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+// ---- Render ----
+function render() {
+  const container = document.getElementById('cards-container');
+  container.innerHTML = '';
+
+  exercises.forEach((ex, idx) => {
+    // Section heading
+    const group = groups.find(g => g.ids[0] === ex.id);
+    if (group) {
+      const h = document.createElement('div');
+      h.className = 'section-heading';
+      h.textContent = group.label;
+      container.appendChild(h);
+    }
+
+    const key = 'ex_' + ex.id;
+    const done = state[key + '_done'] === true;
+    const reflection = state[key + '_reflect'] || '';
+    const open = state[key + '_open'] === true;
+
+    const card = document.createElement('div');
+    card.className = 'card' + (open ? ' open' : '');
+    card.id = 'card-' + ex.id;
+
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(${ex.id})">
+        <div class="card-number">${ex.id}</div>
+        <div class="card-title-wrap">
+          <div class="card-title">${ex.title}</div>
+          <div class="card-meta">${ex.meta}</div>
+        </div>
+        ${done ? '<span style="color:#388e3c;font-size:.85rem;">✓</span>' : ''}
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="info-grid">
+          <div class="info-block full">
+            <div class="info-label">So geht es</div>
+            <div class="info-text">${ex.how}</div>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Warum es hilft</div>
+            <div class="info-text">${ex.why}</div>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Wann besonders sinnvoll</div>
+            <div class="info-text">${ex.when}</div>
+          </div>
+        </div>
+        <div class="timer-row">
+          <div class="timer-display" id="timer-${ex.id}">${formatTime(ex.duration)}</div>
+          <button class="btn btn-gold" onclick="startTimer(${ex.id}, ${ex.duration})">▶ Timer starten</button>
+          <button class="btn btn-outline" onclick="resetTimer(${ex.id}, ${ex.duration})">↺</button>
+          <button class="btn btn-done ${done ? 'checked' : ''}" id="done-${ex.id}" onclick="toggleDone(${ex.id})">
+            ${done ? '✓ Erledigt' : 'Als erledigt markieren'}
+          </button>
+        </div>
+        <div class="reflect-area">
+          <div class="reflect-label">Meine Notiz zu dieser Übung</div>
+          <textarea placeholder="Wie hat es sich angefühlt? Was hast du bemerkt?" 
+            onchange="saveReflect(${ex.id}, this.value)">${reflection}</textarea>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  updateProgress();
+}
+
+function toggleCard(id) {
+  const key = 'ex_' + id + '_open';
+  state[key] = !state[key];
+  save();
+  render();
+  // Scroll to card
+  setTimeout(() => {
+    document.getElementById('card-' + id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+function toggleDone(id) {
+  const key = 'ex_' + id + '_done';
+  state[key] = !state[key];
+  save();
+  render();
+}
+
+function saveReflect(id, val) {
+  state['ex_' + id + '_reflect'] = val;
+  save();
+}
+
+function clearAll() {
+  if (confirm('Alle Fortschritte und Notizen löschen?')) {
+    state = {};
+    save();
+    render();
+  }
+}
+
+// ---- Progress ----
+function updateProgress() {
+  const done = exercises.filter(ex => state['ex_' + ex.id + '_done']).length;
+  document.getElementById('progress-text').textContent = done + ' von 10';
+  document.getElementById('progress-fill').style.width = (done * 10) + '%';
+  document.getElementById('summary-count').textContent = done;
+}
+
+// ---- Timer ----
+const timers = {};
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function startTimer(id, total) {
+  if (timers[id]) { clearInterval(timers[id].interval); }
+  const el = document.getElementById('timer-' + id);
+  if (!el) return;
+  let remaining = parseInt(el.dataset.remaining || total);
+  if (remaining <= 0) remaining = total;
+
+  timers[id] = {
+    interval: setInterval(() => {
+      remaining--;
+      if (el) {
+        el.textContent = formatTime(remaining);
+        el.dataset.remaining = remaining;
+      }
+      if (remaining <= 0) {
+        clearInterval(timers[id].interval);
+        if (el) el.textContent = '✓ Fertig';
+      }
+    }, 1000)
+  };
+}
+
+function resetTimer(id, total) {
+  if (timers[id]) clearInterval(timers[id].interval);
+  const el = document.getElementById('timer-' + id);
+  if (el) {
+    el.textContent = formatTime(total);
+    el.dataset.remaining = total;
+  }
+}
+
+// ---- Init ----
+render();
+</script>
+</body>
+</html>
